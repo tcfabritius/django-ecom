@@ -60,17 +60,22 @@
     </main>
 
     <script>
-        $(document).on('click', '#delete-button', function(e) {
+      // Delete item
+        $(document).on('click', '.delete-button', function(e) {
             e.preventDefault();
+            var productid = $(this).data('index');
             $.ajax({
                 url: "{% url 'basket:basket_delete' %}",
                 type: 'POST',
                 data: {
-                    productid: $('#delete-button').val(),
+                    productid: $(this).data('index'),
                     csrfmiddlewaretoken: '{{ csrf_token }}',
                     action: 'post'
                 },
                 success: function(json) {
+                  $('.product-item[data-index="' + productid + '"]').remove();
+                  document.getElementById("subtotal").innerHTML = json.subtotal
+                  document.getElementById("basket-qty").innerHTML = json.qty
                 },
                 error: function(xhr, errmsg, err) {
                 }
@@ -78,6 +83,27 @@
         });
 
 
+        // Update item
+        $(document).on('click', '.update-button', function(e) {
+            e.preventDefault();
+            var productid = $(this).data('index');
+            $.ajax({
+                url: "{% url 'basket:basket_update' %}",
+                type: 'POST',
+                data: {
+                    productid: $(this).data('index'),
+                    productqty: $('#select' + productid +' option:selected').text(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function(json) {
+                  document.getElementById("basket-qty").innerHTML = json.qty
+                  document.getElementById("subtotal").innerHTML = json.subtotal
+                },
+                error: function(xhr, errmsg, err) {
+                }
+            });
+        });
     </script>
 
 

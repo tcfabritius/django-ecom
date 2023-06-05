@@ -26,7 +26,7 @@ class Basket():
         '''
         product_id = product.id
         if product_id not in self.basket:
-            self.basket[product_id] = {'price': str(product.price), 'qty': int(qty)}
+            self.basket[product_id] = {'price': str(product.price), 'qty': qty}
 
         self.save()
 
@@ -50,7 +50,7 @@ class Basket():
     
     def __len__(self):
         '''
-        Get the basket data and count the qty of items
+        Get the basket data and 9count the qty of items
         '''
         return sum(item['qty'] for item in self.basket.values())
     
@@ -69,6 +69,16 @@ class Basket():
             
         self.save()
 
+
+    def update(self, product, qty):
+        '''
+        Update values in session data
+        '''
+        product_id = str(product)
+        if product_id in self.basket:
+            self.basket[product_id]['qty'] = qty
+            
+        self.save()
 
     def save(self):
         self.session.modified = True
