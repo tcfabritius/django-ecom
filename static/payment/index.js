@@ -1,3 +1,6 @@
+
+
+
 var stripe = Stripe('pk_test_51NGbWQEhsvUKfQ6CW0TM7y6MMGgCYcLHowU6QetsPlgMSMvE0X6QJU5uasYkPhXU8N0Ayg4Qzo1ApienlGRvkmG50062jmy1HU');
 
 var elem = document.getElementById('submit');
