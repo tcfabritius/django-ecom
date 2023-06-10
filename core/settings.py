@@ -113,7 +113,7 @@ PASSWORD_RESET_TIMEOUT_DAYS = 2
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Stripe settings
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51NGbWQEhsvUKfQ6CW0TM7y6MMGgCYcLHowU6QetsPlgMSMvE0X6QJU5uasYkPhXU8N0Ayg4Qzo1ApienlGRvkmG50062jmy1HU'
-SECRET_KEY = 'sk_test_51NGbWQEhsvUKfQ6CrmJmqN54gF7k62bLIpia4o1axki9OXdNZQV8fFAaqBVqDGatzxFWL0Qg6S8GgLarnnz2IFJ900Q6zbaJ16'
+os.environ.setdefault('STRIPE_PUBLISHABLE_KEY', 'pk_test_51NGbWQEhsvUKfQ6CW0TM7y6MMGgCYcLHowU6QetsPlgMSMvE0X6QJU5uasYkPhXU8N0Ayg4Qzo1ApienlGRvkmG50062jmy1HU')
+STRIPE_SECRET_KEY = 'sk_test_51NGbWQEhsvUKfQ6CrmJmqN54gF7k62bLIpia4o1axki9OXdNZQV8fFAaqBVqDGatzxFWL0Qg6S8GgLarnnz2IFJ900Q6zbaJ16'
 STRIPE_ENDPOINT_SECRET = 'whsec_ec7f58a769e03179c57e08710a1a7db744e3e83245044c0a48956dff0f951f39'
 # .\stripe listen --forward-to localhost:8000/payment/webhook/
