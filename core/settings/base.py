@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = 'django-insecure-gqzf=7o&yz4ia7ouxod^(v!ct#$y(1d@-vlvyc+f2erjazztk3'
 
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'account',
     'payment',
     'orders',
+    'mptt',
 ]
 
 MIDDLEWARE = [
