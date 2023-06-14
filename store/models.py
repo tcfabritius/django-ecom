@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -154,6 +155,12 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         _("Updated at"),
         auto_now=True
+    )
+
+    users_wishlist = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="users_wishlist",
+        blank=True
     )
 
     class Meta:
