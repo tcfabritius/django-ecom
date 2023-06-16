@@ -14,6 +14,13 @@
 </div>
 
 <div class="container">
+    {% if messages %}
+<div class="alert alert-warning" alert-{{ message.tags }} role="alert">
+  {% for message in messages  %}
+    {{message|safe}}
+  {% endfor %}
+</div>
+{% endif %}
     <div class="row g-3">
         {% if deliveryoptions|length == 0 %}
         <div class="col-12">No delivery options available - <a href="{% url 'store:store_home' %}">Home</a></div>
@@ -31,7 +38,7 @@
                 <div class="p-2 flex-grow-1 bd-highlight">Total:</div>
                 <div class="p-2 bd-highlight"><span id="total" class="fw-bold h5">{{ basket.get_total_price }}</span><span class="fw-bold h5">€</span></div>
             </div>
-            <a role="button" href="" class="btn btn-success fw-bold w-100" type="button">Pay Securely</a>
+            <a role="button" href="{% url 'checkout:delivery_address' %}" class="btn btn-success fw-bold w-100" type="button">Pay Securely</a>
         </div>
         <div class="col-md-7 col-lg-8">
             {% for option in deliveryoptions %}
